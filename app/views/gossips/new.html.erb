@@ -1,0 +1,27 @@
+<!-- app/views/gossips/new.html.erb -->
+<h1>Create a new Gossip</h1>
+
+<%= form_tag gossips_path, method: :post do %>
+  <div>
+    <%= label_tag :title, "Title" %>
+    <%= text_field_tag :title %>
+  </div>
+  <div>
+    <%= label_tag :content, "Content" %>
+    <%= text_area_tag :content %>
+  </div>
+  <div>
+    <%= submit_tag "Create Gossip" %>
+  </div>
+<% end %>
+
+<% if @gossip.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@gossip.errors.count, "error") %> prohibited this gossip from being saved:</h2>
+    <ul>
+      <% @gossip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
